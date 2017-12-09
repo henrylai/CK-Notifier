@@ -13,6 +13,8 @@ $(document).ready(function() {
 });
 
 (function loop() {
+    // found flag
+    var found = false;
     $( ".KittyStatus-note" ).each(function( index ) {
         var threshold = $("#threshold-value").val();
         var text = $(this).text();
@@ -21,13 +23,14 @@ $(document).ready(function() {
             // convert string to float
             var price = parseFloat(text.substring(2));
             if (price < threshold) {
+                found = true;
 				$(this).click();
                 alert("Found kitty price of: " + price);
                 return false;
-            } else {
-				setTimeout(loop,5000);
-			}
-			
+            }
         }
     });
+    if (!found) {
+        setTimeout(loop,5000);
+    }
 })();
