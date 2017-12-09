@@ -21,16 +21,7 @@ $(document).ready(function() {
         GM_setValue("threshold", threshold);
     });
 
-    $( ".status" ).click(function(e) {
-        status = !status;
-        GM_setValue("status", status);
-        $(this).text((status ? "Stop": "Start"));
-        if(status) {
-           loop();
-        }
-    });
-
-    (function loop() {
+    function loop() {
         if(status === true) {
             $( ".KittyStatus-note" ).each(function( index ) {
                 var text = $(this).text();
@@ -55,7 +46,20 @@ $(document).ready(function() {
                 }, 10000);
             }
         }
-    })();
+    }
+
+    $( ".status" ).click(function(e) {
+        status = !status;
+        GM_setValue("status", status);
+        $(this).text((status ? "Stop": "Start"));
+        if(status) {
+           loop();
+        }
+    });
+
+    if(status){
+        loop();
+    }
 });
 
 
