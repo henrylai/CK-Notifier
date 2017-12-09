@@ -24,8 +24,10 @@ $(document).ready(function() {
 				$(this).click();
                 alert("Found kitty price of: " + price);
                 return false;
-            }
+            } else {
+				setTimeout(loop,5000);
+			}
+			
         }
     });
-    setTimeout(loop,5000);
 })();
