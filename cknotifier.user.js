@@ -16,6 +16,11 @@ $(document).ready(function() {
     $("#app").prepend("Set alert threshold value: <input id=\"threshold-value\" value=\"" + threshold +"\"\>" +
                       "<button style=\"border:1px solid black\" type=\"button\" class=\"status\">" + (status ? "Stop": "Start") + "<\/button>");
 
+    $('#threshold-value').on('input', function() {
+        var threshold = $("#threshold-value").val();
+        GM_setValue("threshold", threshold);
+    });
+
     $( ".status" ).click(function(e) {
         status = !status;
         GM_setValue("status", status);
@@ -28,8 +33,6 @@ $(document).ready(function() {
     (function loop() {
         if(status === true) {
             $( ".KittyStatus-note" ).each(function( index ) {
-                var threshold = $("#threshold-value").val();
-                GM_setValue("threshold", threshold);
                 var text = $(this).text();
                 // Price found
                 if(text.indexOf('.') !== -1) {
