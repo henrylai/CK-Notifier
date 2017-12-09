@@ -4,7 +4,7 @@
 // @namespace http://henrylai.me
 // @version 0.1
 // @description Notifies on low priced CKs
-// @match https://www.cryptokitties.co/*
+// @match https://www.cryptokitties.co/marketplace*
 // @copyright 2017
 // @require http://code.jquery.com/jquery-latest.js
 // @grant GM_setValue
